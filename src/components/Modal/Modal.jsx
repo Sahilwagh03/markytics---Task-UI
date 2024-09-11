@@ -14,33 +14,33 @@ const Modal = ({ Open, Close, children }) => {
     )
 }
 
-const ModalContent = ({ children }) => {
+const ModalContent = ({ children , className=""}) => {
     return (
-        <div className='text-center fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg border-2 bg-white text-black dark:bg-[#09090b] dark:text-white dark:border-[#27272a] translate-x-[-50%] translate-y-[-50%] gap-4 p-6 shadow-lg duration-200 sm:rounded-lg flex flex-col gap-2'>
+        <div className={`text-center fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg border-2 bg-white text-black dark:bg-[#09090b] dark:text-white dark:border-[#27272a] translate-x-[-50%] translate-y-[-50%] gap-4 p-6 shadow-lg duration-200 sm:rounded-lg flex flex-col gap-2 ${className}`}>
             {children}
         </div>
     )
 }
 
-const ModalHeader = ({ children }) => {
+const ModalHeader = ({ children ,className=""}) => {
     return (
-        <div className='flex flex-col gap-2'>
+        <div className={`flex flex-col gap-2 ${className}`}>
             {children}
         </div>
     )
 }
 
-const ModalTitle = ({ children }) => {
+const ModalTitle = ({ children , className=""}) => {
     return (
-        <h1 className='text-3xl font-bold'>
+        <h1 className={`text-3xl font-bold ${className}`}>
             {children}
         </h1>
     )
 }
 
-const ModalDescription = ({children}) => {
+const ModalDescription = ({children ,className=""}) => {
     return (
-        <p className='text-lg text-[#a1a1aa]'>
+        <p className={`text-lg text-[#a1a1aa] ${className}`}>
             {children}
         </p>
     )

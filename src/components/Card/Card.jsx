@@ -3,6 +3,8 @@ import { formatDateTime } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import Button from '../Button/Button'
+import DeleteConfirmation from '../DeleteConfirmation/DeleteConfirmation'
 
 const EventCard = ({ event, hidePrice }) => {
 
@@ -29,6 +31,7 @@ const EventCard = ({ event, hidePrice }) => {
           <Link href={`/events/${event._id}/update`}>
             <Image src="/assets/icons/edit.svg" alt="edit" width={20} height={20} />
           </Link>
+          <DeleteConfirmation id={event._id} />
         </div>
       )}
 
@@ -47,7 +50,7 @@ const EventCard = ({ event, hidePrice }) => {
         <p className="p-medium-16 p-medium-18 text-grey-500">
           {date}
         </p>
-        
+
         <p className="p-medium-16 p-medium-18 text-black">
           Location : <span className='p-medium-16 p-medium-18 text-grey-500'>{event.location}</span>
         </p>

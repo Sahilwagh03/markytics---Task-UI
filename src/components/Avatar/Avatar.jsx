@@ -2,7 +2,7 @@ import React from 'react'
 import AvatarImage from './AvatarImage'
 const Avatar = ({ src , alt, className , size }) => {
     return (
-        <div className='w-auto h-auto rounded-full'>
+        <div className='w-auto h-auto rounded-full cursor-pointer'>
             <AvatarImage src={src} size={size} className={className} alt={alt} />
         </div>
     )
