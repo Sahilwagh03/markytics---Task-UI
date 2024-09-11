@@ -10,6 +10,8 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/Sheet/Sheet'
 import Button from '../Button/Button';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import LineChartComponent from '../Graphs/LIneChartComponent';
+import BarChartComponent from '../Graphs/BarChartComponent';
 
 const dashboard_data = [
   {
@@ -119,10 +121,18 @@ const Dashboard_1 = () => {
                 ))}
               </div>
             </div>
-            <div className='grid  md:grid-cols-1 lg:grid-cols-[2fr_auto] pb-4 gap-2 h-fit'>
-              {events.map((event) => (
-                <EventCard key={event._id} event={event} hidePrice={false} />
-              ))}
+            <div>
+              <h2 className='text-2xl font-bold'>Event List</h2>
+              
+              <div className='grid  md:grid-cols-1 lg:grid-cols-3 pb-4 gap-2 h-fit'>
+                {events.map((event) => (
+                  <EventCard key={event._id} event={event} hidePrice={false} />
+                ))}
+              </div>
+            </div>
+            <div className='grid gap-3 md:grid-cols-2 lg:grid-cols-2  min-w-full h-fit'>
+              <BarChartComponent />
+              <LineChartComponent />
             </div>
           </div>
         </div>
