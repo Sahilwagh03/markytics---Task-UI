@@ -3,13 +3,19 @@ import React, { useState } from 'react'
 import { Card, CardHeader, CardDescription, CardBody, CardFooter } from '@/components/Ui/Card/CardComponets'
 import Input from "@/components/Input/Input";
 import Button from "@/components/Button/Button";
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+
+const isValidEmail = (email) => {
+    // Simple regex for validating email
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+};
 
 const Login = () => {
     const [formState, setFormState] = useState({ email: '', password: '' });
     const [errors, setErrors] = useState({});
-    const router =  useRouter()
+    const router = useRouter();
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormState((prevState) => ({
@@ -25,7 +31,11 @@ const Login = () => {
 
     const validateForm = () => {
         const newErrors = {};
-        if (!formState.email) newErrors.email = 'Email is required';
+        if (!formState.email) {
+            newErrors.email = 'Email is required';
+        } else if (!isValidEmail(formState.email)) {
+            newErrors.email = 'Invalid email format';
+        }
         if (!formState.password) newErrors.password = 'Password is required';
         return newErrors;
     };
@@ -36,8 +46,8 @@ const Login = () => {
             setErrors(newErrors);
         } else {
             setErrors({});
-            localStorage.setItem('userData', JSON.stringify(formState))
-            router.push('/dashboard')
+            localStorage.setItem('userData', JSON.stringify(formState));
+            router.push('/dashboard');
         }
     };
 
@@ -81,7 +91,7 @@ const Login = () => {
                 <CardFooter className="flex flex-col gap-2">
                     <div className="flex flex-col gap-4">
                         <Button className="w-full bg-primary text-white dark:bg-white dark:text-black" onClick={handleLogin}>
-                                Login
+                            Login
                         </Button>
                     </div>
                 </CardFooter>

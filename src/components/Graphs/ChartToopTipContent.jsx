@@ -10,7 +10,6 @@ const ChartsTooltipContent = ({
 }) => {
     if (active && payload && payload.length) {
         const renderIndicator = (entry) => {
-            console.log(entry)
             const indicatorStyles = {
                 dot: 'w-2.5 h-2.5 rounded-[2px] border-[--color-border] bg-[--color-bg]',
                 line: 'shrink-0 rounded-[2px] border-[--color-border] bg-[--color-bg] w-1 h-2.5',

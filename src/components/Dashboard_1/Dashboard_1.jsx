@@ -1,17 +1,18 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { SideBar, SideBarBody, SideBarFooter, SideBarItem } from './SideBar'
-import { LuHome, LuBell, LuUsers, LuActivity, LuDollarSign, LuBarChart2, LuPanelRightOpen, LuCalendar } from 'react-icons/lu';
+import { SideBar, SideBarBody, SideBarItem } from './SideBar'
 import Avatar from '@/components/Avatar/Avatar'
 import SearchBar from '@/components/SearchBar/SearchBar';
 import { Card, CardBody, CardDescription, CardTitle, CardHeader } from '../Ui/Card/CardComponets'
 import EventCard from '../Card/Card';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/Sheet/Sheet'
 import Button from '../Button/Button';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import LineChartComponent from '../Graphs/LIneChartComponent';
 import BarChartComponent from '../Graphs/BarChartComponent';
+import { SideBarItemsData } from '@/constant';
+import { LuActivity, LuCalendar, LuDollarSign, LuUsers } from 'react-icons/lu';
+import UserProfilePopup from '../UserProfile/UserProfilePopup';
+import { useRouter } from 'next/navigation';
 
 const dashboard_data = [
   {
@@ -41,31 +42,27 @@ const dashboard_data = [
 ];
 
 
-const SideBarItemsData = [
-  {
-    icon: <LuHome className='w-6 h-6 text-black dark:text-white' />,
-    title: 'Home',
-    link: '/'
-  },
-  {
-    icon: <LuBarChart2 className='w-6 h-6 text-black dark:text-white' />,
-    title: 'Analytics'
-  },
-  {
-    icon: <LuBell className='w-6 h-6 text-black dark:text-white' />,
-    title: 'Notifications'
-  },
-]
 const Dashboard_1 = () => {
 
   const [events, setEvents] = useState([]);
+  
+  const router = useRouter();
 
   useEffect(() => {
-    const storedData = localStorage.getItem('eventData');
-    if (storedData) {
-      setEvents(JSON.parse(storedData));
+    // Check if the user is logged in by checking for userData in localStorage
+    const userData = localStorage.getItem('userData');
+    if (!userData) {
+      // If no user data, redirect to the login page
+      router.push('/login');
+    } else {
+      // If user is logged in, fetch events
+      const storedData = localStorage.getItem('eventData');
+      if (storedData) {
+        setEvents(JSON.parse(storedData));
+      }
     }
-  }, []);
+  }, [router]);
+
   return (
     <div className='flex flex-row rounded-lg relative'>
       <div className='hidden md:block'>
@@ -98,7 +95,7 @@ const Dashboard_1 = () => {
                 </Button>
               </div>
               <div className='hidden md:flex'>
-                <Avatar size='xs'></Avatar>
+                <UserProfilePopup/>
               </div>
             </div>
           </div>
@@ -122,7 +119,7 @@ const Dashboard_1 = () => {
               </div>
             </div>
             <div>
-              <h2 className='text-2xl font-bold'>Event List</h2>
+              <h2 className='text-2xl font-bold pb-5'>Event List</h2>
               
               <div className='grid  md:grid-cols-1 lg:grid-cols-3 pb-4 gap-2 h-fit'>
                 {events.map((event) => (

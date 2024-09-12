@@ -2,16 +2,23 @@
 import NotFound from '@/components/NotFound/NotFound';
 import { formatDateTime } from '@/lib/utils'
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
 const EventDetails = ({ params }) => {
     const [event, setEvent] = useState(null);
-
+    const router = useRouter()
     useEffect(() => {
         // Load event data from localStorage
         const storedData = JSON.parse(localStorage.getItem('eventData')) || [];
         const foundEvent = storedData.find(event => event._id === params.id);
         setEvent(foundEvent);
+        // Check if the user is logged in by checking for userData in localStorage
+        const userData = localStorage.getItem('userData');
+        if (!userData) {
+            // If no user data, redirect to the login page
+            router.push('/login');
+        }
     }, [params.id]);
 
     if (!event) {

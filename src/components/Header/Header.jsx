@@ -6,6 +6,7 @@ import NavItems from "../NavItem/NavItem"
 import { useEffect, useState } from "react"
 import Avatar from "../Avatar/Avatar"
 import MobileNav from "../MobileNav/MobileNav"
+import UserProfilePopup from "../UserProfile/UserProfilePopup"
 
 const Header = () => {
   const [userDetails, setUserDetails] = useState(null)
@@ -37,7 +38,7 @@ const Header = () => {
           <div className="hidden md:flex">
             {
               userDetails ?
-                <Avatar size='xs'></Avatar>
+                <UserProfilePopup/>
                 :
                 <Button asChild className="hidden md:flex rounded-full button !h-auto bg-primary text-white dark:bg-primary-50" size="lg">
                   <Link href="/login">

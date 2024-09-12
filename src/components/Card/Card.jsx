@@ -1,12 +1,21 @@
-
+'use client'
 import { formatDateTime } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from '../Button/Button'
 import DeleteConfirmation from '../DeleteConfirmation/DeleteConfirmation'
+import { useRouter } from 'next/navigation'
 
 const EventCard = ({ event, hidePrice }) => {
+  const [isDeleted , setIsDeleted]=useState(false)
+  const router = useRouter()
+
+  useEffect(()=>{
+    if(isDeleted){
+      window.location.reload();
+    }
+  },[isDeleted])
 
   let date = ''
   if (event) {
@@ -31,7 +40,7 @@ const EventCard = ({ event, hidePrice }) => {
           <Link href={`/events/${event._id}/update`}>
             <Image src="/assets/icons/edit.svg" alt="edit" width={20} height={20} />
           </Link>
-          <DeleteConfirmation id={event._id} />
+          <DeleteConfirmation id={event._id} setIsDeleted={setIsDeleted}/>
         </div>
       )}
 

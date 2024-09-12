@@ -13,7 +13,19 @@ import { FaCheckCircle } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 
 
-const EventForm = ({type='create' , userId}) => {
+const EventForm = ({ type = 'create', userId }) => {
+
+
+    const router = useRouter();
+    useEffect(() => {
+        // Check if the user is logged in by checking for userData in localStorage
+        const userData = localStorage.getItem('userData');
+        if (!userData) {
+            // If no user data, redirect to the login page
+            router.push('/login');
+        } 
+    }, [router]);
+
     const [formState, setFormState] = useState({
         title: '',
         description: '',
@@ -33,7 +45,6 @@ const EventForm = ({type='create' , userId}) => {
     const [errors, setErrors] = useState({});
     const [storedData, setStoredData] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const router = useRouter();
 
     // Fetch data from localStorage on component mount
     useEffect(() => {
@@ -137,7 +148,7 @@ const EventForm = ({type='create' , userId}) => {
         router.push('/dashboard');
     };
     return (
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-5 pb-5">
             <div className="flex flex-col gap-5 md:flex-row">
                 <div className="w-full">
                     <Input

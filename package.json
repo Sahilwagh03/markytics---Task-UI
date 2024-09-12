@@ -12,6 +12,7 @@
     "@uploadthing/react": "^6.8.0",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
+    "js-cookie": "^3.0.5",
     "next": "14.2.8",
     "query-string": "^9.1.0",
     "react": "^18",

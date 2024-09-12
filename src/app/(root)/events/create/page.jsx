@@ -8,7 +8,7 @@ const CreateEvent = () => {
         <h3 className="wrapper-px wrapper h3-bold text-center sm:text-left">Create Event</h3>
       </section>
 
-      <div className="wrapper-px wrapper my-8">
+      <div className="h-full wrapper-px wrapper my-8">
         <EventForm />
       </div>
     </>

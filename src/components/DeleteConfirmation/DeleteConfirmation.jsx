@@ -3,11 +3,10 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 import { Modal, ModalContent, ModalDescription, ModalFooter, ModalHeader, ModalTitle } from '../Modal/Modal'
 import Button from '../Button/Button'
-import { useRouter } from 'next/navigation'
 
-const DeleteConfirmation = ({ id, onDelete }) => {
+const DeleteConfirmation = ({ id, setIsDeleted }) => {
     const [modal, setModal] = useState(false);
-    const router = useRouter()
+    
     const handleConfirm = () => {
         setModal(true);  // Show the modal
     }
@@ -24,8 +23,8 @@ const DeleteConfirmation = ({ id, onDelete }) => {
 
         // Close the modal
         setModal(false);
+        setIsDeleted(true)
 
-        router.refresh()
     }
 
     return (

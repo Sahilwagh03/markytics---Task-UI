@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
 
 
 
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
       <body>
         <div className="flex h-screen flex-col">
           <main className="flex-1">{children}</main>
+          <Footer />
         </div>
       </body>
     </html>

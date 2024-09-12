@@ -1,3 +1,7 @@
+import { LuHome, LuBell,  LuBarChart2,  } from 'react-icons/lu';
+
+
+
 export const headerLinks = [
     {
       label: 'Home',
@@ -95,4 +99,20 @@ export const eventData =[
     "organizer": { "firstName": "Michael", "lastName": "Garcia" },
     "_id": "event6"
   }
+]
+
+export const SideBarItemsData = [
+  {
+    icon: <LuHome className='w-6 h-6 text-black dark:text-white' />,
+    title: 'Home',
+    link: '/'
+  },
+  {
+    icon: <LuBarChart2 className='w-6 h-6 text-black dark:text-white' />,
+    title: 'Analytics'
+  },
+  {
+    icon: <LuBell className='w-6 h-6 text-black dark:text-white' />,
+    title: 'Notifications'
+  },
 ]

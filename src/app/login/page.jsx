@@ -3,7 +3,7 @@ import React from 'react'
 
 const LoginPage = () => {
   return (
-    <div className='h-full flex justify-center items-center'><Login/></div>
+    <div className='h-full md:h-[80vh] flex justify-center items-center'><Login/></div>
   )
 }
 
