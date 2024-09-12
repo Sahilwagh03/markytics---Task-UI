@@ -52,7 +52,7 @@ const Login = () => {
     };
 
     return (
-        <div className="flex items-center justify-center">
+        <div className="py-8 md:py-0 flex items-center justify-center">
             <Card className="max-w-sm w-full">
                 <CardHeader className='!mb-2'>
                     <h1 className="text-2xl font-bold text-black dark:text-white">Login</h1>

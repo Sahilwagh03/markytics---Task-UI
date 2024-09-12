@@ -28,7 +28,7 @@ const MobileNav = () => {
             </button>
 
             {isOpen && (
-                <div className="absolute z-50 top-12 px-5 pb-5 w-fit right-0 w-48 bg-white dark:bg-black text-black dark:text-white border border-gray-200 dark:border-gray-800 rounded-lg shadow-lg">
+                <div className="absolute z-50 top-12 px-5 py-5 right-0 w-48 bg-white dark:bg-black text-black dark:text-white border border-gray-200 dark:border-gray-800 rounded-lg shadow-lg">
                     <NavItems></NavItems>
                     <li
                         className='flex-left pt-5 p-medium-16 whitespace-nowrap'
