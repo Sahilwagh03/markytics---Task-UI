@@ -8,7 +8,7 @@ const UpdatePage = ({ params }) => {
             <section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center">
                 <h3 className="wrapper-px wrapper h3-bold text-center sm:text-left">Update Event</h3>
             </section>
-            <div className="h-full wrapper-px wrapper my-8">
+            <div className="h-full lg:h-[120vh] wrapper-px wrapper my-8">
                 <EventForm userId={userId} type='update' />
             </div>
         </>

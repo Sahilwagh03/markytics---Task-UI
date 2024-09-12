@@ -1,15 +1,10 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { SideBar, SideBarBody, SideBarItem } from './SideBar'
-import Avatar from '@/components/Avatar/Avatar'
 import SearchBar from '@/components/SearchBar/SearchBar';
 import { Card, CardBody, CardDescription, CardTitle, CardHeader } from '../Ui/Card/CardComponets'
 import EventCard from '../Card/Card';
 import Button from '../Button/Button';
 import Link from 'next/link';
-import LineChartComponent from '../Graphs/LIneChartComponent';
-import BarChartComponent from '../Graphs/BarChartComponent';
-import { SideBarItemsData } from '@/constant';
 import { LuActivity, LuCalendar, LuDollarSign, LuUsers } from 'react-icons/lu';
 import UserProfilePopup from '../UserProfile/UserProfilePopup';
 import { useRouter } from 'next/navigation';
@@ -64,19 +59,8 @@ const Dashboard_1 = () => {
   }, [router]);
 
   return (
-    <div className='flex flex-row rounded-lg relative'>
-      <div className='hidden md:block'>
-        <SideBar title='TechPro'>
-          <SideBarBody>
-            {
-              SideBarItemsData.map(({ icon, title, link }, index) => (
-                <SideBarItem icon={icon} title={title} link={link} key={index} />
-              ))
-            }
-          </SideBarBody>
-        </SideBar>
-      </div>
-      <div className='flex-2 bg-white dark:dark:bg-[#27272a] h-screen w-full rounded-xl md:rounded-tl-none md:rounded-bl-none overflow-auto'>
+    <div className='w-full'>
+      <div className='w-full flex-2 bg-white dark:dark:bg-[#27272a] h-screen w-full rounded-xl md:rounded-tl-none md:rounded-bl-none overflow-auto'>
         <div className='p-0 md:p-4'>
           <div className='flex  flex-row z-10 items-center justify-between p-2 px-3 bg-white dark:bg-black md:dark:bg-transparent top-0 sticky md:relative md:bg-transparent md:justify-end'>
             <div className='flex flex-row gap-4 items-center'>
@@ -126,10 +110,6 @@ const Dashboard_1 = () => {
                   <EventCard key={event._id} event={event} hidePrice={false} />
                 ))}
               </div>
-            </div>
-            <div className='grid gap-3 md:grid-cols-2 lg:grid-cols-2  min-w-full h-fit'>
-              <BarChartComponent />
-              <LineChartComponent />
             </div>
           </div>
         </div>

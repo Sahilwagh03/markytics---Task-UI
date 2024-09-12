@@ -109,10 +109,12 @@ export const SideBarItemsData = [
   },
   {
     icon: <LuBarChart2 className='w-6 h-6 text-black dark:text-white' />,
-    title: 'Analytics'
+    title: 'Analytics',
+    link:'/dashboard/analytics'
   },
   {
     icon: <LuBell className='w-6 h-6 text-black dark:text-white' />,
-    title: 'Notifications'
+    title: 'Notifications',
+    link:'/dashboard/notifications'
   },
 ]
